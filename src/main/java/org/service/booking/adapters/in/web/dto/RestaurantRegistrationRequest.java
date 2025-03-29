@@ -1,4 +1,4 @@
-package org.service.booking.adapters.in.web;
+package org.service.booking.adapters.in.web.dto;
 
 import org.service.booking.domain.model.Restaurant;
 

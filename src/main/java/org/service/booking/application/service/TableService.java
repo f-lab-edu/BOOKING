@@ -1,21 +1,29 @@
 package org.service.booking.application.service;
 
-import org.service.booking.domain.model.Restaurant;
+import org.service.booking.application.port.in.CreateTableCommand;
+import org.service.booking.application.port.in.CreateTableUseCase;
 import org.service.booking.domain.model.Table;
-import org.service.booking.domain.repository.RestaurantRepositoryPort;
 import org.service.booking.domain.repository.TableRepositoryPort;
 import org.springframework.stereotype.Service;
 
 @Service
-public class TableService {
+public class TableService implements CreateTableUseCase {
     private final TableRepositoryPort tableRepositoryPort;
 
-    public TableService(RestaurantRepositoryPort restaurantRepositoryPort, TableRepositoryPort tableRepositoryPort) {
+    public TableService(TableRepositoryPort tableRepositoryPort) {
         this.tableRepositoryPort = tableRepositoryPort;
     }
 
-    public Table createTable(Long restaurantId, int capacity, boolean isAvailable) {
-        Table table = new Table(null, restaurantId, capacity, isAvailable);
+    @Override
+    public Table createTable(CreateTableCommand command) {
+        Table table = new Table(
+                null, 
+                command.getRestaurantId(), 
+                command.getTableNumber(), 
+                command.getCapacity(), 
+                command.getIsAvailable()
+        );
+        
         return tableRepositoryPort.save(table);
     }
 }

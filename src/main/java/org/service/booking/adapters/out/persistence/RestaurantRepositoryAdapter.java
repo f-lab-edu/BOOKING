@@ -23,10 +23,10 @@ public class RestaurantRepositoryAdapter implements RestaurantRepositoryPort {
     @Override
     public Optional<Restaurant> findById(Long id) {
         return jpaRestaurantRepository.findById(id)
-                .map(this::mapToDomain);
+                .map(this::toDomain);
     }
 
-    private Restaurant mapToDomain(RestaurantEntity entity){
+    private Restaurant toDomain(RestaurantEntity entity){
         return new Restaurant(
                 entity.getId(),
                 entity.getName(),

@@ -19,12 +19,4 @@ public class Reservation {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
     private String status;
-    
-    public Reservation(Long id, Long tableId, LocalDateTime startTime, LocalDateTime endTime, String status) {
-        this.id = id;
-        this.tableId = tableId;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.status = status;
-    }
 }

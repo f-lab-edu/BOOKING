@@ -22,19 +22,14 @@ public class RestaurantEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String address;
-
     private String phone;
 
     private LocalTime openTime;
-
     private LocalTime closeTime;
 
     private LocalDateTime createdAt;
-
     private LocalDateTime updatedAt;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)

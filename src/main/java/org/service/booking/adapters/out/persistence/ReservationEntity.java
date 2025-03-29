@@ -8,11 +8,11 @@ import org.service.booking.domain.model.Reservation;
 
 import java.time.LocalDateTime;
 
-@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@jakarta.persistence.Table(name = "reservations")
+@Entity
+@Table(name = "reservations")
 public class ReservationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,6 +33,9 @@ public class ReservationEntity {
     public Reservation toDomain() {
         return new Reservation(
             id,
+            LocalDateTime.now(),
+            customerName,
+            customerPhone,
             table.getId(),
             startTime,
             endTime,
