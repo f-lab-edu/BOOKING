@@ -15,7 +15,7 @@ public class ReservationResponse {
     private Long tableId;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String status;
+    private Reservation.ReservationStatus status;
     
     public static ReservationResponse fromDomain(Reservation reservation) {
         return ReservationResponse.builder()

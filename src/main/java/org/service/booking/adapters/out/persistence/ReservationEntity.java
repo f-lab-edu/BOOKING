@@ -24,8 +24,9 @@ public class ReservationEntity {
     
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String status;
-    
+    private Reservation.ReservationStatus status;
+
+    private Long restaurantId;
     @ManyToOne
     @JoinColumn(name = "table_id")
     private TableEntity table;
@@ -33,13 +34,14 @@ public class ReservationEntity {
     public Reservation toDomain() {
         return new Reservation(
             id,
-            LocalDateTime.now(),
+            reservationTime,
             customerName,
             customerPhone,
+            restaurantId,
             table.getId(),
             startTime,
             endTime,
-            status
+                status
         );
     }
     

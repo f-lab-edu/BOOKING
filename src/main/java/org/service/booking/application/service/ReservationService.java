@@ -37,10 +37,11 @@ public class ReservationService implements CreateReservationUseCase {
                 LocalDateTime.now(),
                 command.getCustomerName(),
                 command.getCustomerPhone(),
+                command.getRestaurantId(),
                 command.getTableId(), 
                 command.getStartTime(), 
-                command.getEndTime(), 
-                "CREATED"
+                command.getEndTime(),
+                Reservation.ReservationStatus.RESERVED
         );
         
         return reservationRepositoryPort.save(reservation);

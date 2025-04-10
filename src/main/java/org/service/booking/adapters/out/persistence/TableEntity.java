@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.service.booking.domain.model.Table;
 
+import java.util.Set;
+
 @Entity
 @Getter
 @Setter
@@ -22,6 +24,9 @@ public class TableEntity {
     @ManyToOne
     @JoinColumn(name = "restaurant_id")
     private RestaurantEntity restaurant;
+
+    @OneToMany(mappedBy = "table", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<SlotEntity> slots;
     
     public Table toDomain() {
         return new Table(

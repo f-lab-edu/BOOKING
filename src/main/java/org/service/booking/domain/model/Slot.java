@@ -9,22 +9,16 @@ import java.time.LocalDateTime;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
+public class Slot {
     private Long id;
-    private LocalDateTime reservationTime;
-    private String customerName;
-    private String customerPhone;
-
-    private Long restaurantId;
     private Long tableId;
     private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private ReservationStatus status;
+    private SlotStatus status;
 
-    public enum ReservationStatus {
-        BOOKED,
-        CANCELLED,
+    public enum SlotStatus {
+        AVAILABLE,
         RESERVED,
+        CANCELLED,
         COMPLETED,
     }
 }
