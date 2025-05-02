@@ -37,6 +37,7 @@ public class RestaurantEntity {
 
     public static RestaurantEntity fromDomain(Restaurant domain) {
         RestaurantEntity entity = new RestaurantEntity();
+        entity.setId(domain.getId());
         entity.setName(domain.getName());
         entity.setAddress(domain.getAddress());
         entity.setPhone(domain.getPhone());

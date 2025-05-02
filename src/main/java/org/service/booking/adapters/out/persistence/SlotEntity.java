@@ -31,14 +31,14 @@ public class SlotEntity {
 
     public Slot toDomain() {
         return new Slot(
-                id,
-                table.getId(),
-                startTime,
-                status
+                this.id,
+                this.table.getId(),
+                this.startTime,
+                this.status
         );
     }
 
-    public SlotEntity fromDomain(Slot slot) {
+    public static SlotEntity fromDomain(Slot slot) {
         SlotEntity entity = new SlotEntity();
         entity.setId(slot.getId());
         entity.setStartTime(slot.getStartTime());
