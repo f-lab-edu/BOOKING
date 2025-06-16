@@ -24,30 +24,37 @@ public class ReservationEntity {
     
     private LocalDateTime startTime;
     private LocalDateTime endTime;
-    private String status;
     
-    @ManyToOne
+    @Enumerated(EnumType.STRING)
+    private Reservation.ReservationStatus status;
+
+    private Long restaurantId;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "table_id")
     private TableEntity table;
     
     public Reservation toDomain() {
         return new Reservation(
-            id,
-            LocalDateTime.now(),
-            customerName,
-            customerPhone,
-            table.getId(),
-            startTime,
-            endTime,
-            status
+            this.id,
+            this.reservationTime,
+            this.customerName,
+            this.customerPhone,
+            this.restaurantId,
+            this.table != null ? this.table.getId() : null,
+            this.startTime,
+            this.endTime,
+            this.status
         );
     }
     
     public static ReservationEntity fromDomain(Reservation reservation) {
         ReservationEntity entity = new ReservationEntity();
+        entity.setId(reservation.getId());
         entity.setReservationTime(reservation.getReservationTime());
         entity.setCustomerName(reservation.getCustomerName());
         entity.setCustomerPhone(reservation.getCustomerPhone());
+        entity.setRestaurantId(reservation.getRestaurantId());
         
         if (reservation.getTableId() != null) {
             TableEntity tableEntity = new TableEntity();

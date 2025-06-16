@@ -1,10 +1,14 @@
 package org.service.booking.adapters.in.web.dto;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.service.booking.domain.model.Restaurant;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
+@Getter
+@NoArgsConstructor
 public class RestaurantRegistrationRequest {
     private String name;
     private String address;
